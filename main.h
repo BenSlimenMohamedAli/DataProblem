@@ -9,16 +9,14 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
-
     /*
         Structs definition
     */ 
     typedef enum boolean{
-        F = 0,T = 1
+        F =0,T=1
     }Bool;
 
-    typedef struct itemSet{
-        short num;
-        Bool linestate [32767];
-    }ItemSet;
+    typedef struct line{
+        char items[100];
+    }Line;
 #endif

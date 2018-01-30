@@ -5,19 +5,18 @@
 
 int main(void){
     // define the items table
-    //ItemSet itemsTable[32767];
-    int d,i=0;
+    Line table[32767]; // the table of strings
+    int i=0;
     char s[100];
     // Opening the file
     FILE * f = fopen("file.txt", "r");
     while(fscanf(f,"%[^\n]",s) != EOF){
-        printf("Done %s\n",s);
         // filling in the table
-
-
-
+        strcpy(table[i].items,s);
         fseek(f,1,SEEK_CUR); // Move to the next line
+        i++; // add 1 to the counter
     }
+    printf("%s",table[i-1].items);
     
     fclose(f);
 }
