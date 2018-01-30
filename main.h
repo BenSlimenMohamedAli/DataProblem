@@ -1,8 +1,5 @@
 #ifndef __MAIN__C__
 #define __MAIN__C__
-
-    // The number of lines in the file
-    short numLines = 0;
     /*
         Libraries definition
     */
@@ -17,6 +14,10 @@
     }Bool;
 
     typedef struct line{
-        char items[100];
+        short items[100];
     }Line;
+
+    typedef struct itemSet{
+        Bool sets[32767];
+    }ItemSet;
 #endif
