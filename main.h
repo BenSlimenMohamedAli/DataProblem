@@ -1,5 +1,5 @@
-#ifndef __MAIN__C__
-#define __MAIN__C__
+#ifndef __MAIN__H__
+#define __MAIN__H__
     /*
         Libraries definition
     */
@@ -14,10 +14,16 @@
     }Bool;
 
     typedef struct line{
-        short items[100];
+        short items[1000];
     }Line;
 
     typedef struct itemSet{
-        Bool sets[32767];
+        Bool lines[2];
     }ItemSet;
-#endif
+
+    /*
+        Functions
+    */
+    Line* readFile(short int *nbLines,short int *noRepeat, short int **noRepeatTable);
+    ItemSet *extractTable(int length,Line *lines);
+#endif 
