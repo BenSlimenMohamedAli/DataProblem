@@ -14,16 +14,19 @@
     }Bool;
 
     typedef struct line{
-        short items[1000];
+        short int items[1000];
     }Line;
 
     typedef struct itemSet{
-        Bool lines[2];
+        short int item;
+        Bool *lines;
     }ItemSet;
 
     /*
         Functions
     */
     Line* readFile(short int *nbLines,short int *noRepeat, short int **noRepeatTable);
-    ItemSet *extractTable(int length,Line *lines);
+    int generateTable(ItemSet ** itemsets);
+    Bool exist(short int number, short int *table, short int size);
+
 #endif 
