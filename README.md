@@ -1,5 +1,4 @@
 # DataProblem 
-## how to read from a file the fastest way
 ```
 
 ```
