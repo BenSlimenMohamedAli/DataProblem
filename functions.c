@@ -5,10 +5,8 @@
 Line* readFile(short int *nbLines,short int *noRepeat,short int **noRepeatTable){
     // define the items table
     static Line lines[32767]; // the table of strings
-    short int i=0, j=0, number;
-    char s[10000];
-    char *token;
-    short int table[32767];
+    short int i=0, j=0, number, table[32767];
+    char s[10000], *token;
 
     // Opening the file
     FILE * f = fopen("file.txt", "r"); 
@@ -27,7 +25,6 @@ Line* readFile(short int *nbLines,short int *noRepeat,short int **noRepeatTable)
                 (*noRepeat)++;
             }
         }
-        
         fseek(f,1,SEEK_CUR); // Move to the next line
         i++; // add 1 to the counter
     }
@@ -35,35 +32,6 @@ Line* readFile(short int *nbLines,short int *noRepeat,short int **noRepeatTable)
     fclose(f);  // closing the file
     return lines;
 }
-
-int generateTable(ItemSet ** itemsets){
-    int i,j;
-    short int nbLines = 0,noRepeat =0;
-    short int *noRepeatTable;
-    Line *lines = readFile(&nbLines,&noRepeat,&noRepeatTable);
-    ItemSet itemset[noRepeat];
-    Bool t[nbLines];
-    for(i =0;i< noRepeat;i++){
-        itemset[i].item = noRepeatTable[i];
-
-        printf("%d  ",itemset[i].item);
-        for(j=0;j<nbLines;j++){
-            if(exist(noRepeatTable[i],lines[j].items,1000)){
-                t[j] = T;
-            }else{
-                t[j] = F;
-            }
-            printf("%d ",t[j]);
-        }
-        printf("\n");
-        itemset[i].lines = t;
-        
-    }
-
-    (*itemsets) = itemset;
-    return noRepeat;
-}
-
 /*
     Verify that an item exists or not
 */
@@ -74,4 +42,19 @@ Bool exist(short int number, short int *table,short int size){
         if (table[i] == number)
             return T;
     return existence;
+}
+
+/*
+    print the list of itemsets
+*/
+
+void print(ItemSet *itemset, short int nbLines, short int noRepeat){
+    short int i,j;
+    for(i=0;i<noRepeat;i++){
+        printf("%d  || ",itemset[i].item);
+        for(j=0;j<nbLines;j++){
+            printf("%d ",itemset[i].lines[j]);
+        }
+        printf("\n\n"); 
+    }
 }

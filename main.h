@@ -19,14 +19,14 @@
 
     typedef struct itemSet{
         short int item;
-        Bool *lines;
+        Bool lines[32767];
     }ItemSet;
 
     /*
         Functions
     */
     Line* readFile(short int *nbLines,short int *noRepeat, short int **noRepeatTable);
-    int generateTable(ItemSet ** itemsets);
     Bool exist(short int number, short int *table, short int size);
+    void print(ItemSet *itemset, short int nbLines, short int noRepeat);
 
 #endif 
